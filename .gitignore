@@ -1,0 +1,36 @@
+# Secrets - NEVER commit
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.cache/
+
+# Hardhat
+blockchain/cache/
+blockchain/artifacts/
+blockchain/typechain-types/
+blockchain/coverage/
+blockchain/coverage.json
+
+# Logs and temp files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

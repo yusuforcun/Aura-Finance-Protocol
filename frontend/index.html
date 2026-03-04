@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Credit Showcase for Women</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at top, #ffe6f2 0%, #fceff9 35%, #f9fbff 70%, #ffffff 100%);
+            background-size: 200% 200%;
+            animation: auraFlow 18s ease-in-out infinite;
+            color: #2b2133;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-text { text-align: center; margin-bottom: 50px; }
+        .header-text h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #e34b84; letter-spacing: 2px; margin-bottom: 10px; }
+        .header-text p { color: #6b5b7c; font-weight: 300; letter-spacing: 1px; max-width: 480px; margin: 0 auto; }
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 1400px; }
+        .group {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            padding: 20px 16px 22px;
+            box-shadow: 0 12px 28px rgba(129, 87, 153, 0.12);
+            border: 1px solid rgba(227, 75, 132, 0.18);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .group-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #e34b84; text-align: center; margin-bottom: 2px; }
+        .group-subtitle { font-size: 0.8rem; color: #7b6a93; text-align: center; margin-bottom: 6px; }
+        .group .card { margin-top: 4px; }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(227, 75, 132, 0.12);
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 18px rgba(129, 87, 153, 0.08);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 26px rgba(227, 75, 132, 0.18);
+            border-color: rgba(227, 75, 132, 0.5);
+        }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2b2133; margin-bottom: 10px; }
+        .card-amount { font-size: 1.4rem; font-weight: 600; color: #e34b84; margin-bottom: 15px; }
+        .card-desc { font-size: 0.85rem; color: #7b6a93; margin-bottom: 25px; line-height: 1.4; flex-grow: 1; }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 0;
+            background: linear-gradient(135deg, #ff8fb1 0%, #ffb3c6 40%, #fcd5ce 100%);
+            border: none;
+            border-radius: 6px;
+            color: #3a233b;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(255, 143, 177, 0.35);
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #ff6f91 0%, #ff8fb1 40%, #ffb3c6 100%);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 111, 145, 0.45);
+        }
+        @keyframes auraFlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 0%; }
+        }
+        @media (max-width: 1200px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header style="width:100%;max-width:1100px;display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#e34b84;">Aura Women's Network</div>
+        <a id="login-link" href="login.html" style="padding:8px 16px;border-radius:999px;border:1px solid rgba(227,75,132,0.4);background:rgba(255,255,255,0.9);color:#e34b84;font-size:0.85rem;font-weight:600;text-decoration:none;">Log In</a>
+    </header>
+
+    <div class="header-text">
+        <h1>Aura Women's Fund</h1>
+        <p>Get what you want now, spread the payment over time. Women who decide today lock in the best limits.</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="group">
+            <div class="group-title">Daily Comfort Packages</div>
+            <div class="group-subtitle">For small but ongoing needs.</div>
+            <div class="card">
+                <div class="card-title">Sapphire Start</div>
+                <div class="card-amount">500 AURA</div>
+                <div class="card-desc">Treat yourself to something small but tangible. Those who miss this limit always say "next time."</div>
+                <a href="credit-detail.html?paket=gunluk-konfor&tutar=500" class="btn">Get Credit Now</a>
+            </div>
+            <div class="card">
+                <div class="card-title">Elegant Support</div>
+                <div class="card-amount">1,000 AURA</div>
+                <div class="card-desc">Don't postpone your daily comfort. Everything you don't get now costs more by month-end.</div>
+                <a href="credit-detail.html?paket=gunluk-konfor&tutar=1000" class="btn">Get Credit Now</a>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Comfortable Living Packages</div>
+            <div class="group-subtitle">Breathe easy all month long.</div>
+            <div class="card">
+                <div class="card-title">Pink Quartz</div>
+                <div class="card-amount">2,500 AURA</div>
+                <div class="card-desc">Refresh your self-care, wardrobe, and energy. This limit is for women who say "I'm worth it."</div>
+                <a href="credit-detail.html?paket=konforlu-yasam&tutar=2500" class="btn">Get Credit Now</a>
+            </div>
+            <div class="card">
+                <div class="card-title">Silver Aura</div>
+                <div class="card-amount">5,000 AURA</div>
+                <div class="card-desc">Ease work, social life, and home expenses. Your decision today relaxes your whole month.</div>
+                <a href="credit-detail.html?paket=konforlu-yasam&tutar=5000" class="btn">Get Credit Now</a>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Big Step Packages</div>
+            <div class="group-subtitle">For work, education, and major decisions.</div>
+            <div class="card">
+                <div class="card-title">Diamond Level</div>
+                <div class="card-amount">35,000 AURA</div>
+                <div class="card-desc">While others ask "how do you keep up?", you'll have your plan done.</div>
+                <a href="credit-detail.html?paket=buyuk-adim" class="btn">Get Credit Now</a>
+            </div>
+            <div class="card">
+                <div class="card-title">Empress</div>
+                <div class="card-amount">100,000 AURA</div>
+                <div class="card-desc">This level is for women who say "I no longer live by others' terms."</div>
+                <a href="credit-detail.html?paket=buyuk-adim" class="btn">Get Credit Now</a>
+            </div>
+        </div>
+    </div>
+
+    <section style="width:100%;max-width:1100px;margin-top:60px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#e34b84;text-align:center;margin-bottom:10px;">Compare Credit Packages</h2>
+        <p style="text-align:center;color:#7b6a93;font-size:0.9rem;margin-bottom:25px;">See which package suits you in 3 seconds. The longer you wait, the more today's rates change.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+            <div class="card" style="align-items:center;">
+                <div class="card-title">Daily Comfort</div>
+                <div class="card-amount">2,500 AURA</div>
+                <div class="card-desc">Small, regular needs. The easiest starting point.</div>
+                <ul style="list-style:none;font-size:0.8rem;color:#7b6a93;text-align:left;margin:0 0 18px 0;padding:0;">
+                    <li>• Low monthly installments</li>
+                    <li>• Flexible repayment</li>
+                    <li>• Stress-free limit</li>
+                </ul>
+                <a href="credit-detail.html?paket=konforlu-yasam&tutar=2500" class="btn">View This Package</a>
+            </div>
+            <div class="card" style="align-items:center;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:10px;right:-40px;background:#ff6f91;color:#fff;font-size:0.7rem;padding:4px 45px;transform:rotate(30deg);">Most Popular</div>
+                <div class="card-title">Balanced Comfort</div>
+                <div class="card-amount">10,000 AURA</div>
+                <div class="card-desc">Reach month-end comfortably without cutting back. Most women prefer this range.</div>
+                <ul style="list-style:none;font-size:0.8rem;color:#7b6a93;text-align:left;margin:0 0 18px 0;padding:0;">
+                    <li>• Balanced installment amounts</li>
+                    <li>• Ideal for bulk spending</li>
+                    <li>• Room to live without missing opportunities</li>
+                </ul>
+                <a href="credit-detail.html?paket=gunluk-konfor&tutar=10000" class="btn">View This Package</a>
+            </div>
+            <div class="card" style="align-items:center;">
+                <div class="card-title">Big Step</div>
+                <div class="card-amount">35,000+ AURA</div>
+                <div class="card-desc">For major decisions: work, education, home. If you have bold goals, look here.</div>
+                <ul style="list-style:none;font-size:0.8rem;color:#7b6a93;text-align:left;margin:0 0 18px 0;padding:0;">
+                    <li>• Repayment spread over the long term</li>
+                    <li>• Single limit for big goals</li>
+                    <li>• Freedom to set your own terms</li>
+                </ul>
+                <a href="credit-detail.html?paket=buyuk-adim" class="btn">View This Package</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="width:100%;max-width:1100px;margin-top:60px;margin-bottom:40px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#e34b84;text-align:center;margin-bottom:8px;">Community & Events</h2>
+        <p style="text-align:center;color:#7b6a93;font-size:0.9rem;margin-bottom:25px;">Women who use Aura are not alone. Connect with hundreds with similar stories.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+                <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#e34b84;margin-bottom:10px;">Communities</h3>
+                <div style="display:grid;gap:12px;">
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Women Owning Their Finances</div>
+                        <div class="card-desc">Closed group of women who talk openly about income, debt, and goals. Numbers matter here.</div>
+                        <a href="community-finance.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Community</a>
+                    </div>
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Strong Single Moms</div>
+                        <div class="card-desc">Pool of experience from women standing financially while raising children alone.</div>
+                        <a href="community-mothers.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Community</a>
+                    </div>
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Career Rebuilders</div>
+                        <div class="card-desc">Courage space for women changing sectors, taking breaks and returning, or starting new businesses.</div>
+                        <a href="community-career.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Community</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#e34b84;margin-bottom:10px;">Events</h3>
+                <div style="display:grid;gap:12px;">
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Online Finance Workshop</div>
+                        <div class="card-desc">Simplify your debt and clarify your budget in 60 minutes. Limited spots; registrants get a special limit email same day.</div>
+                        <a href="event-workshop.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Event</a>
+                    </div>
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Self-Investment Evening</div>
+                        <div class="card-desc">Learn how to turn your credit limit from a burden into an investment with real examples.</div>
+                        <a href="event-investment.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Event</a>
+                    </div>
+                    <div class="card" style="padding:18px;align-items:flex-start;">
+                        <div class="card-title">Aura Women Summit Meetup</div>
+                        <div class="card-desc">Small online gathering with Aura users. Ask, share, get inspired.</div>
+                        <a href="event-summit.html" class="btn" style="width:auto;padding:8px 18px;margin-top:8px;">Join Event</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

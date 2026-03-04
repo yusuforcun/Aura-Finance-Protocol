@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Women Summit Mini Meetup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: linear-gradient(135deg, #fef7fb 0%, #fdf0ff 50%, #f8f4ff 100%); color: #2b2133; min-height: 100vh; padding: 24px; }
+        .wrapper { max-width: 720px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 4px 24px rgba(227, 75, 132, 0.12); padding: 32px 28px; border: 1px solid rgba(227, 75, 132, 0.15); }
+        .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; background: rgba(227, 75, 132, 0.1); color: #c73d6f; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 1.85rem; color: #e34b84; margin: 0 0 8px 0; }
+        h2 { font-size: 0.95rem; color: #6b5b7c; font-weight: 500; margin: 0 0 20px 0; line-height: 1.45; }
+        .stats { display: flex; gap: 24px; margin-bottom: 20px; padding: 16px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .stat { font-size: 0.85rem; color: #7b6a93; }
+        .stat strong { color: #e34b84; font-weight: 600; }
+        p { font-size: 0.92rem; color: #4f415f; line-height: 1.6; margin: 0 0 12px 0; }
+        ul { padding-left: 20px; margin: 0 0 20px 0; color: #4f415f; font-size: 0.9rem; line-height: 1.7; }
+        .testimonial { background: #fdf8fb; border-left: 4px solid #e34b84; padding: 14px 18px; margin: 20px 0; border-radius: 0 10px 10px 0; font-size: 0.9rem; color: #5a4a6a; font-style: italic; }
+        .btn-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: linear-gradient(135deg, #e34b84 0%, #ff6f91 100%); color: #fff; box-shadow: 0 4px 14px rgba(227, 75, 132, 0.35); }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-1px); }
+        .btn-primary:disabled { cursor: default; }
+        .btn-secondary { background: #fff; color: #e34b84; border: 1px solid rgba(227, 75, 132, 0.4); }
+        .btn-secondary:hover { background: #fef7fb; }
+        #reward-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .reward-modal { background: #fff; border-radius: 16px; padding: 28px; max-width: 360px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .reward-modal h3 { margin: 0 0 12px 0; color: #e34b84; font-size: 1.25rem; }
+        .reward-modal p { margin: 0 0 16px 0; font-size: 0.9rem; color: #6b5b7c; }
+        .reward-code { background: #fdf8fb; padding: 12px 20px; border-radius: 10px; font-family: monospace; font-size: 1rem; font-weight: 700; color: #e34b84; letter-spacing: 2px; margin-bottom: 20px; }
+        #reward-close { padding: 10px 24px; background: #e34b84; color: #fff; border: none; border-radius: 999px; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <span class="badge">Mini meetup • Aura women</span>
+        <h1>Aura Women Summit Mini Meetup</h1>
+        <h2>You're invited to a small, focused sharing session with active Aura users.</h2>
+        <div class="stats">
+            <span class="stat"><strong>March 28</strong>, 6pm CET</span>
+            <span class="stat"><strong>8 spots left</strong> of 15</span>
+        </div>
+        <p>This meetup feels like a closed club. Real women share how they use their limit, mistakes they made, and what they're glad they did. It's about experience, not ads.</p>
+        <ul>
+            <li>Mini stories from women using limits at different levels</li>
+            <li>Q&A with an Aura team moderator</li>
+            <li>Automatic addition to the summit priority invite list</li>
+        </ul>
+        <div class="testimonial">"One sentence from another member changed how I use my limit. Intimate and honest." — D.</div>
+        <p style="font-size:0.85rem;color:#7b6a93;">Sometimes one sentence is enough to make that financial decision you've put off for years.</p>
+        <div class="btn-row">
+            <button id="joinWalletBtn" class="btn btn-secondary" style="font-size:0.8rem;">Connect wallet to join</button>
+            <button id="joinBtn" class="btn btn-primary" data-reward-code="AURA-SUMMIT-50" data-reward-text="50 AURA bonus granted on-chain! You're on the priority list for the main summit.">Join</button>
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+    <div id="reward-overlay">
+        <div class="reward-modal">
+            <h3>🎉 You're in!</h3>
+            <p id="reward-text">50 AURA bonus points! You're on the priority list for the main summit.</p>
+            <div class="reward-code" id="reward-code">AURA-SUMMIT-50</div>
+            <button id="reward-close">Got it</button>
+        </div>
+    </div>
+    <script type="module" src="/src/join-reward.ts"></script>
+</body>
+</html>
