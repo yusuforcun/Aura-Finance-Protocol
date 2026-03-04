@@ -51,8 +51,9 @@ npm run deploy:sepolia   # Deploy to Sepolia
 
 3. **Configure GitHub Pages**
    - Repo → **Settings** → **Pages**
-   - **Source:** GitHub Actions
-   - Workflow will run on each push to `main`
+   - **Source:** Deploy from a branch
+   - **Branch:** gh-pages, folder: / (root)
+   - Workflow pushes build to gh-pages on each push to main
 
 4. **Optional: API URL**  
    Repo → **Settings** → **Secrets and variables** → **Actions** → **Variables**  
