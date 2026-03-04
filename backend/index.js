@@ -5,7 +5,12 @@ import { JsonRpcProvider, Contract, Wallet } from "ethers";
 import OpenAI from "openai";
 
 const app = express();
-app.use(cors({ origin: ["http://localhost:5173", "http://127.0.0.1:5173"] }));
+const corsOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  ...(process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",").map((o) => o.trim()) : []),
+];
+app.use(cors({ origin: corsOrigins }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
@@ -197,4 +202,8 @@ app.post("/api/grant-join-bonus", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Aura API http://localhost:${PORT}`));
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => console.log(`Aura API http://localhost:${PORT}`));
+}
+
+export default app;

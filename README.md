@@ -55,12 +55,23 @@ npm run deploy:sepolia   # Deploy to Sepolia
    - **Branch:** gh-pages, folder: / (root)
    - Workflow pushes build to gh-pages on each push to main
 
-4. **Optional: API URL**  
-   Repo → **Settings** → **Secrets and variables** → **Actions** → **Variables**  
-   Add `VITE_API_URL` with your backend URL (e.g. Vercel).
+4. **Deploy backend to Vercel**
+   ```bash
+   cd backend
+   npm install -g vercel
+   vercel
+   ```
+   - Follow prompts, link to your GitHub repo if desired.
+   - In Vercel dashboard: **Settings → Environment Variables** add:
+     - `GROQ_API_KEY` (from https://console.groq.com/keys)
+     - `BONUS_SIGNER_PRIVATE_KEY` (optional, for Join bonus)
+     - `CORS_ORIGIN` = `https://YOUR_USERNAME.github.io` (your Pages URL)
+   - Redeploy after adding env vars.
 
-5. **Backend deployment**  
-   Deploy the backend (e.g. Vercel, Railway) and use its URL as `VITE_API_URL`.
+5. **Add backend URL to GitHub**
+   - Repo → **Settings** → **Secrets and variables** → **Actions** → **Variables**
+   - **New repository variable:** `VITE_API_URL` = `https://your-backend.vercel.app` (Vercel deployment URL)
+   - After this, each push to `main` builds the frontend with the correct API URL.
 
 ## Live site
 
