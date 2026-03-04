@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         login: "login.html",
+        "credit-detail": "credit-detail.html",
         "community-finance": "community-finance.html",
         "community-mothers": "community-mothers.html",
         "community-career": "community-career.html",
