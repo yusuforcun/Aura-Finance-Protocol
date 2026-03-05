@@ -467,10 +467,10 @@
 
     <script>
         const params = new URLSearchParams(location.search);
-        const paket = params.get('paket') || 'buyuk-adim';
-        const tutarParam = params.get('tutar');
-        const isBuyukAdim = paket === 'buyuk-adim';
-        const fixedAmount = tutarParam ? parseInt(tutarParam, 10) : 2500;
+        const packageType = params.get('package') || params.get('paket') || 'big-step';
+        const amountParam = params.get('amount') || params.get('tutar');
+        const isBigStep = packageType === 'big-step' || packageType === 'buyuk-adim';
+        const fixedAmount = amountParam ? parseInt(amountParam, 10) : 2500;
 
         const amountGroup = document.getElementById('amountGroup');
         const fixedAmountGroup = document.getElementById('fixedAmountGroup');
@@ -483,7 +483,7 @@
         const summaryFee = document.getElementById('summaryFee');
         const summaryTotal = document.getElementById('summaryTotal');
 
-        if (isBuyukAdim) {
+        if (isBigStep) {
             amountGroup.style.display = 'block';
             fixedAmountGroup.style.display = 'none';
         } else {
@@ -494,7 +494,7 @@
         }
 
         function getAmount() {
-            return isBuyukAdim ? parseInt(amountSlider.value, 10) : fixedAmount;
+            return isBigStep ? parseInt(amountSlider.value, 10) : fixedAmount;
         }
 
         function updateSummary() {
@@ -504,7 +504,7 @@
             const termInterest = amount * (term * 0.005); 
             const total = amount + fee + termInterest;
 
-            if (isBuyukAdim) amountVal.innerHTML = amount.toLocaleString() + ' <span>AURA</span>';
+            if (isBigStep) amountVal.innerHTML = amount.toLocaleString() + ' <span>AURA</span>';
             termVal.innerHTML = term + ' <span>MO</span>';
             summaryPrincipal.innerText = amount.toLocaleString() + ' AURA';
             summaryFee.innerText = Math.round(fee + termInterest).toLocaleString() + ' AURA';
@@ -515,10 +515,10 @@
         termSlider.addEventListener('input', updateSummary);
         updateSummary();
         window.auraGetAmount = getAmount;
-        window.auraIsBuyukAdim = isBuyukAdim;
+        window.auraIsBuyukAdim = isBigStep;
         window.auraOnScoreUpdate = (puan) => {
             const btn = document.getElementById('confirmBtn');
-            if (!btn || !isBuyukAdim) return;
+            if (!btn || !isBigStep) return;
             if (typeof puan === 'number' && puan >= 80) {
                 btn.disabled = false;
                 btn.innerText = 'Use Credit Now';
@@ -527,7 +527,7 @@
                 btn.innerText = puan !== null ? `Aura Score insufficient (${puan}/80 required)` : 'Check Aura Score First';
             }
         };
-        if (isBuyukAdim) {
+        if (isBigStep) {
             const btn = document.getElementById('confirmBtn');
             if (btn) btn.disabled = true;
             if (btn) btn.innerText = 'Check Aura Score First';
