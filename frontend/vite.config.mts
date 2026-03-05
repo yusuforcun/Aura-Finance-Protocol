@@ -3,6 +3,11 @@ import { defineConfig } from "vite";
 export default defineConfig({
   base: process.env.BASE_PATH || "/",
   root: ".",
+  server: {
+    headers: {
+      "Content-Security-Policy": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;",
+    },
+  },
   build: {
     rollupOptions: {
       input: {
