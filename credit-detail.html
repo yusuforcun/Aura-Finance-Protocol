@@ -366,7 +366,7 @@
 
         .metamask-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(227,75,132,0.4); background: rgba(255,255,255,0.95); color: #e34b84; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
     </style>
-  <script type="module" crossorigin src="/Aura-Finance-Protocol/assets/credit-detail-Dt6-Hcp9.js"></script>
+  <script type="module" crossorigin src="/Aura-Finance-Protocol/assets/credit-detail-h9Emo_k6.js"></script>
   <link rel="modulepreload" crossorigin href="/Aura-Finance-Protocol/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/Aura-Finance-Protocol/assets/index-Dy2iHduP.js">
 </head>
@@ -444,11 +444,14 @@
                         Repayment Amount
                         <span style="opacity:0.7;">(in AURA)</span>
                     </label>
-                    <div style="display:flex;gap:8px;">
+                    <div style="display:flex;gap:8px;align-items:center;">
                         <input id="repayAmount" type="number" min="1" step="100" placeholder="e.g. 1000"
                                style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid rgba(123,106,147,0.35);font-size:0.85rem;">
                         <button id="repayBtn" class="btn-confirm" style="width:auto;padding:10px 16px;font-size:0.8rem;">
                             Repay
+                        </button>
+                        <button id="closeCreditBtn" class="btn-confirm" style="width:auto;padding:10px 16px;font-size:0.8rem;display:none;background:#27ae60;">
+                            Close Credit
                         </button>
                     </div>
                 </div>
