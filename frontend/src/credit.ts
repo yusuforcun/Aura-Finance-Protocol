@@ -1,7 +1,7 @@
 import { BrowserProvider, Contract } from "ethers";
 
 const AURA_CONTRACT_ADDRESS = "0x88180c13610aC5dA91bE68150Fa5bbc2a00a1B11";
-const API_BASE = (import.meta as any).env?.VITE_API_URL || "http://localhost:3000";
+const API_BASE = (import.meta as any).env?.VITE_API_URL || "https://backend-bhtx0vla7-yusuforcunozd-3728s-projects.vercel.app";
 const AURA_CONTRACT_ABI = [
   "function takeCredit(uint256 amount) external",
   "function repay(uint256 amount) external",
