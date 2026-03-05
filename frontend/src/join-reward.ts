@@ -2,7 +2,7 @@
  * Join button + reward popup for community and event pages.
  * Backend (owner) signs grantJoinBonus - 50 AURA drops on-chain. User pays no gas.
  */
-const API_BASE = (import.meta as any).env?.VITE_API_URL || "https://backend-bhtx0vla7-yusuforcunozd-3728s-projects.vercel.app";
+const API_BASE = (import.meta as any).env?.VITE_API_URL || "https://backend-jet-eta-55.vercel.app";
 
 function getPageId(): string {
   const path = window.location.pathname;
