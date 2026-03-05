@@ -21,6 +21,7 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -356,9 +357,9 @@
                 border-bottom: 1px solid rgba(212, 175, 159, 0.1);
             }
         }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin-bottom: 16px; padding: 0 20px; box-sizing: border-box; }
-        .top-bar a { color: #e34b84; font-size: 0.85rem; text-decoration: none; font-weight: 500; }
-        .metamask-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(227,75,132,0.4); background: rgba(255,255,255,0.95); color: #e34b84; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin-bottom: 16px; padding: 0 20px; box-sizing: border-box; flex-shrink: 0; }
+        .top-bar a { color: #e34b84; font-size: 0.85rem; text-decoration: none; font-weight: 500; white-space: nowrap; }
+        .metamask-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(227,75,132,0.4); background: rgba(255,255,255,0.95); color: #e34b84; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
     </style>
 </head>
 <body>
