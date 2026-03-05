@@ -1,10 +1,12 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import rateLimit from "express-rate-limit";
 import { JsonRpcProvider, Contract, Wallet } from "ethers";
 import OpenAI from "openai";
 
 const app = express();
+
 const corsOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
@@ -16,6 +18,16 @@ const corsOrigins = [
 // Allow any origin in production to avoid CORS issues (reflect request origin)
 app.use(cors({ origin: true, credentials: false }));
 app.use(express.json());
+
+// Rate limit: max 10 requests per minute per IP (prevents AI abuse / infinite loop)
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+  message: { error: "Too many requests", detail: "Please wait a minute before trying again." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api/", apiLimiter);
 
 const PORT = process.env.PORT || 3000;
 const AURA_CONTRACT = process.env.AURA_CONTRACT_ADDRESS || "0xEb704E80B916e36f3B002c8C8885788CF1990070";
