@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Log In</title>
+    <style>
+        body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: radial-gradient(circle at top, #ffe6f2 0%, #fceff9 35%, #f9fbff 70%, #ffffff 100%); background-size: 210% 210%; animation: auraFlow 20s ease-in-out infinite; color: #2b2133; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .card { width: 100%; max-width: 420px; background: rgba(255,255,255,0.96); border-radius: 18px; box-shadow: 0 20px 45px rgba(227,75,132,0.25); padding: 28px 24px 26px; border: 1px solid rgba(227,75,132,0.20); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #e34b84; margin: 0 0 6px 0; }
+        p.subtitle { font-size: 0.9rem; color: #6b5b7c; margin: 0 0 18px 0; }
+        .field-group { margin-bottom: 14px; }
+        label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.7px; color: #7b6a93; margin-bottom: 6px; }
+        input { width: 100%; padding: 10px 11px; border-radius: 10px; border: 1px solid rgba(123,106,147,0.35); font-size: 0.9rem; outline: none; background: rgba(255,255,255,0.9); }
+        input:focus { border-color: #e34b84; box-shadow: 0 0 0 3px rgba(227,75,132,0.18); }
+        .primary-btn { width: 100%; padding: 12px; border-radius: 999px; border: none; background: linear-gradient(135deg,#ff6f91 0%,#ff8fb1 45%,#ffb3c6 100%); color: #fff; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; }
+        .secondary { margin-top: 14px; text-align: center; font-size: 0.85rem; color: #7b6a93; }
+        .secondary a { color: #e34b84; font-weight: 600; text-decoration: none; }
+        #contract-box { margin-top: 18px; padding-top: 12px; border-top: 1px dashed rgba(227,75,132,0.3); font-size: 0.85rem; color: #4f415f; display: none; }
+        #contract-address { display: inline-block; margin-top: 4px; padding: 4px 8px; border-radius: 999px; background: rgba(255,143,177,0.12); color: #e34b84; font-family: monospace; font-size: 0.8rem; }
+        .popup-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: none; align-items: center; justify-content: center; z-index: 50; }
+        .popup-card { max-width: 360px; width: 90%; background: rgba(255,255,255,0.98); border-radius: 18px; box-shadow: 0 18px 40px rgba(227,75,132,0.35); padding: 20px 18px 18px; border: 1px solid rgba(227,75,132,0.35); text-align: center; }
+        .popup-card h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #e34b84; margin-bottom: 6px; }
+        .popup-card p { font-size: 0.85rem; color: #6b5b7c; margin-bottom: 10px; }
+        .popup-address { display: inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(255,143,177,0.16); color: #e34b84; font-family: monospace; font-size: 0.8rem; margin-bottom: 8px; }
+        @keyframes auraFlow { 0% { background-position: 0% 0%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 0%; } }
+    </style>
+  <script type="module" crossorigin src="/Aura-Finance-Protocol/assets/login-hGKuzqtm.js"></script>
+  <link rel="modulepreload" crossorigin href="/Aura-Finance-Protocol/assets/modulepreload-polyfill-B5Qt9EMX.js">
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Log in to see your limits, credits you've started, and personalized offers. Many women base their decisions on this summary screen.</p>
+        <form>
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="example@mail.com">
+            </div>
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="••••••••">
+            </div>
+            <button type="button" class="primary-btn" id="loginBtn">Log In / Sign Up</button>
+        </form>
+        <div id="contract-box">Your contract address is ready. This address represents you for Aura transactions: <div id="contract-address"></div></div>
+        <div class="secondary" style="margin-top:8px;"><a href="index.html">Back to home</a></div>
+    </div>
+    <div id="contract-popup" class="popup-backdrop">
+        <div class="popup-card">
+            <h2>Contract Address Created</h2>
+            <p>On this demo address, all your Aura transactions can be thought of as a single signature.</p>
+            <div id="popup-contract-address" class="popup-address"></div>
+            <button id="popupCloseBtn" class="primary-btn" style="margin-top:10px;width:auto;padding-inline:18px;">Got it</button>
+        </div>
+    </div>
+</body>
+</html>

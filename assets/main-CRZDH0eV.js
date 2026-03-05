@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";function o(){const e=document.getElementById("login-link");if(!e)return;let t=!1;try{t=sessionStorage.getItem("aura_demo_logged_in")==="true"}catch{t=!1}t&&(e.textContent="Logged In",e.title="You are already logged in",e.style.opacity="0.6",e.style.cursor="default",e.addEventListener("click",n=>{n.preventDefault()}))}o();

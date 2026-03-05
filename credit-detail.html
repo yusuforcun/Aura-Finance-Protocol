@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Credit for Women</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #ffe6f2 0%, #fdf0ff 35%, #f9fbff 70%, #ffffff 100%);
+            background-size: 220% 220%;
+            animation: auraFlowDetail 20s ease-in-out infinite;
+            color: #2b2133;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .dashboard {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(227, 75, 132, 0.18);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 24px 48px rgba(227, 75, 132, 0.22);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        /* Left side - Control panel */
+
+        .controls-section {
+            padding: 40px;
+            border-right: 1px solid rgba(244, 143, 177, 0.35);
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #e34b84;
+            margin-bottom: 5px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: rgba(255, 143, 177, 0.18);
+            color: #e34b84;
+            border: 1px solid #ff9fbf;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .input-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #7b6a93;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slider-container {
+            position: relative;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ff6f91;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(212, 175, 159, 0.5);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(212, 175, 159, 0.2);
+            border-radius: 2px;
+        }
+
+        .amount-display {
+            font-size: 2.3rem;
+            font-weight: 300;
+            color: #2b2133;
+            margin-top: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .amount-display span {
+            font-size: 1rem;
+            color: #e34b84;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Right side - Summary and actions */
+
+        .summary-section {
+            padding: 40px;
+            background: linear-gradient(180deg, rgba(255, 240, 250, 0.95), rgba(255, 255, 255, 0.98));
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(244, 143, 177, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #7b6a93;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(212, 175, 159, 0.2);
+            color: #2b2133;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .highlight-val {
+            color: #e34b84;
+        }
+
+        .fomo-text {
+            font-size: 0.8rem;
+            color: #e34b84;
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .fomo-text span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #e34b84;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+
+        .btn-confirm {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff6f91 0%, #ff8fb1 45%, #ffb3c6 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 111, 145, 0.4);
+        }
+
+        .wallet-connect {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(244, 143, 177, 0.6);
+            border-radius: 8px;
+            color: #e34b84;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .wallet-connect:hover {
+            background: rgba(255, 216, 235, 0.6);
+        }
+
+        @keyframes auraFlowDetail {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 60%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .aura-score-section {
+            margin-top: 28px;
+            padding: 18px;
+            background: rgba(255, 231, 243, 0.4);
+            border: 1px solid rgba(227, 75, 132, 0.2);
+            border-radius: 12px;
+        }
+
+        .aura-score-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #e34b84 0%, #ff6f91 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .aura-score-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(227, 75, 132, 0.35);
+        }
+
+        .aura-score-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .aura-score-loading {
+            color: #7b6a93;
+            font-size: 0.9rem;
+            margin-top: 12px;
+        }
+
+        .aura-score-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .aura-score-sifat {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #e34b84;
+            font-weight: 600;
+        }
+
+        .aura-score-puan {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #e34b84;
+        }
+
+        .aura-score-result {
+            margin-top: 10px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            color: #2b2133;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .aura-score-info-btn {
+            margin-top: 12px;
+            width: 100%;
+            padding: 10px 14px;
+            background: transparent;
+            border: 1px dashed rgba(227, 75, 132, 0.5);
+            border-radius: 8px;
+            color: #e34b84;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .aura-score-info-btn:hover {
+            background: rgba(227, 75, 132, 0.08);
+        }
+
+        .aura-score-info-box {
+            margin-top: 10px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            border: 1px solid rgba(227, 75, 132, 0.2);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #2b2133;
+        }
+
+        .aura-score-info-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #e34b84;
+            margin-bottom: 10px;
+        }
+
+        .aura-score-info-box ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .aura-score-info-box li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .controls-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(212, 175, 159, 0.1);
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="/Aura-Finance-Protocol/assets/credit-detail-DfQIr6Zn.js"></script>
+  <link rel="modulepreload" crossorigin href="/Aura-Finance-Protocol/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/Aura-Finance-Protocol/assets/index-Dy2iHduP.js">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="controls-section">
+            <div class="brand-title">Aura Women's Fund</div>
+            <div class="status-badge">Active Today: Women's Limit</div>
+
+            <div class="input-group" id="amountGroup">
+                <label>
+                    Amount You Want to Use Now
+                    <span id="maxLimit">Your approved limit: 100,000 AURA</span>
+                </label>
+                <div class="slider-container">
+                    <input type="range" id="amountSlider" min="35000" max="100000" step="5000" value="35000">
+                </div>
+                <div class="amount-display" id="amountVal">35,000 <span>AURA</span></div>
+            </div>
+            <div class="input-group" id="fixedAmountGroup" style="display:none;">
+                <label>Selected Package Amount</label>
+                <div class="amount-display" id="fixedAmountVal">2,500 <span>AURA</span></div>
+            </div>
+
+            <div class="input-group" style="margin-top: 40px;">
+                <label>Over How Many Months to Repay?</label>
+                <div class="slider-container">
+                    <input type="range" id="termSlider" min="1" max="12" step="1" value="3">
+                </div>
+                <div class="amount-display" id="termVal" style="font-size: 1.8rem;">3 <span>MO</span></div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <div>
+                <button class="wallet-connect" id="walletBtn">Connect Wallet, See Your Limit</button>
+                
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>Amount You'll Use Today</span>
+                        <span id="summaryPrincipal">2,500 AURA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Network Fee (Gas)</span>
+                        <span>0.002 ETH</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Aura Service Fee</span>
+                        <span id="summaryFee">50 AURA</span>
+                    </div>
+                    <div class="summary-row" id="summaryBonusRow" style="display:none;">
+                        <span>Join bonus applied</span>
+                        <span style="color:#27ae60;">-<span id="summaryBonus">0</span> AURA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Repayment (comfortable installments)</span>
+                        <span class="highlight-val" id="summaryTotal">2,550 AURA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="fomo-text">
+                    <span></span> Only 2 more women can lock this limit with you today. Rates change after that.
+                </div>
+                <button class="btn-confirm" id="confirmBtn">Use Credit Now</button>
+
+                <div style="margin-top:18px;">
+                    <label style="display:flex;justify-content:space-between;font-size:0.8rem;color:#7b6a93;margin-bottom:6px;">
+                        Repayment Amount
+                        <span style="opacity:0.7;">(in AURA)</span>
+                    </label>
+                    <div style="display:flex;gap:8px;">
+                        <input id="repayAmount" type="number" min="1" step="100" placeholder="e.g. 1000"
+                               style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid rgba(123,106,147,0.35);font-size:0.85rem;">
+                        <button id="repayBtn" class="btn-confirm" style="width:auto;padding:10px 16px;font-size:0.8rem;">
+                            Repay
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin-top:10px;font-size:0.78rem;color:#7b6a93;">
+                    <a id="txLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none;color:#e34b84;text-decoration:none;">
+                    </a>
+                </div>
+
+                <div class="aura-score-section">
+                    <button class="aura-score-btn" id="auraScoreBtn" disabled>Connect wallet → See Aura Score</button>
+                    <div id="auraScoreLoading" class="aura-score-loading" style="display:none;">Your Aura Score is being prepared…</div>
+                    <div id="auraScoreHeader" class="aura-score-header" style="display:none;">
+                        <span id="auraScoreSifat" class="aura-score-sifat"></span>
+                        <span id="auraScorePuan" class="aura-score-puan"></span>
+                    </div>
+                    <div id="auraScoreResult" class="aura-score-result" style="display:none;"></div>
+                    <button type="button" class="aura-score-info-btn" id="auraScoreInfoBtn">How Can I Raise My Aura Score?</button>
+                    <div id="auraScoreInfoBox" class="aura-score-info-box" style="display:none;">
+                        <h4>How to Raise Your Aura Score</h4>
+                        <ul>
+                            <li><strong>Regular repayment:</strong> Pay your credits on time and consistently. This boosts your reliability.</li>
+                            <li><strong>Gradual start:</strong> Begin with Daily Comfort or Comfortable Living packages, then increase your limit over time.</li>
+                            <li><strong>Debt management:</strong> Clear active debt before taking new credit. Having a single open credit at a time looks better.</li>
+                            <li><strong>Be patient:</strong> Your score is based on on-chain history; every payment and repayment improves it.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        const paket = params.get('paket') || 'buyuk-adim';
+        const tutarParam = params.get('tutar');
+        const isBuyukAdim = paket === 'buyuk-adim';
+        const fixedAmount = tutarParam ? parseInt(tutarParam, 10) : 2500;
+
+        const amountGroup = document.getElementById('amountGroup');
+        const fixedAmountGroup = document.getElementById('fixedAmountGroup');
+        const amountSlider = document.getElementById('amountSlider');
+        const amountVal = document.getElementById('amountVal');
+        const fixedAmountVal = document.getElementById('fixedAmountVal');
+        const termSlider = document.getElementById('termSlider');
+        const termVal = document.getElementById('termVal');
+        const summaryPrincipal = document.getElementById('summaryPrincipal');
+        const summaryFee = document.getElementById('summaryFee');
+        const summaryTotal = document.getElementById('summaryTotal');
+
+        if (isBuyukAdim) {
+            amountGroup.style.display = 'block';
+            fixedAmountGroup.style.display = 'none';
+        } else {
+            amountGroup.style.display = 'none';
+            fixedAmountGroup.style.display = 'block';
+            fixedAmountVal.innerHTML = fixedAmount.toLocaleString() + ' <span>AURA</span>';
+            document.body.dataset.fixedAmount = String(fixedAmount);
+        }
+
+        function getAmount() {
+            return isBuyukAdim ? parseInt(amountSlider.value, 10) : fixedAmount;
+        }
+
+        function updateSummary() {
+            const amount = getAmount();
+            const term = parseInt(termSlider.value, 10);
+            const fee = amount * 0.02;
+            const termInterest = amount * (term * 0.005); 
+            const total = amount + fee + termInterest;
+
+            if (isBuyukAdim) amountVal.innerHTML = amount.toLocaleString() + ' <span>AURA</span>';
+            termVal.innerHTML = term + ' <span>MO</span>';
+            summaryPrincipal.innerText = amount.toLocaleString() + ' AURA';
+            summaryFee.innerText = Math.round(fee + termInterest).toLocaleString() + ' AURA';
+            summaryTotal.innerText = Math.round(total).toLocaleString() + ' AURA';
+        }
+
+        amountSlider.addEventListener('input', updateSummary);
+        termSlider.addEventListener('input', updateSummary);
+        updateSummary();
+        window.auraGetAmount = getAmount;
+        window.auraIsBuyukAdim = isBuyukAdim;
+        window.auraOnScoreUpdate = (puan) => {
+            const btn = document.getElementById('confirmBtn');
+            if (!btn || !isBuyukAdim) return;
+            if (typeof puan === 'number' && puan >= 80) {
+                btn.disabled = false;
+                btn.innerText = 'Use Credit Now';
+            } else {
+                btn.disabled = true;
+                btn.innerText = puan !== null ? `Aura Score insufficient (${puan}/80 required)` : 'Check Aura Score First';
+            }
+        };
+        if (isBuyukAdim) {
+            const btn = document.getElementById('confirmBtn');
+            if (btn) btn.disabled = true;
+            if (btn) btn.innerText = 'Check Aura Score First';
+        }
+
+        const auraScoreInfoBtn = document.getElementById('auraScoreInfoBtn');
+        const auraScoreInfoBox = document.getElementById('auraScoreInfoBox');
+        if (auraScoreInfoBtn && auraScoreInfoBox) {
+            auraScoreInfoBtn.addEventListener('click', () => {
+                const visible = auraScoreInfoBox.style.display === 'block';
+                auraScoreInfoBox.style.display = visible ? 'none' : 'block';
+                auraScoreInfoBtn.innerText = visible ? 'How Can I Raise My Aura Score?' : 'Hide Info';
+            });
+        }
+    </script>
+</body>
+</html>
