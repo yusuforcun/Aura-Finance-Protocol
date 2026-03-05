@@ -8,9 +8,13 @@ const app = express();
 const corsOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
+  "https://yusuforcun.github.io",
+  "http://yusufufus.com.tr",
+  "https://yusufufus.com.tr",
   ...(process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",").map((o) => o.trim()) : []),
 ];
-app.use(cors({ origin: corsOrigins }));
+// Allow any origin in production to avoid CORS issues (reflect request origin)
+app.use(cors({ origin: true, credentials: false }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
