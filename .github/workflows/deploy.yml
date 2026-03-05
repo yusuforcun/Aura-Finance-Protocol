@@ -22,7 +22,7 @@ jobs:
         working-directory: frontend
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_API_URL: https://backend-jet-eta-55.vercel.app
         run: |
           npm install
           npm run build
