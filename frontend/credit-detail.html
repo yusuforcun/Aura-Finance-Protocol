@@ -436,11 +436,14 @@
                         Repayment Amount
                         <span style="opacity:0.7;">(in AURA)</span>
                     </label>
-                    <div style="display:flex;gap:8px;">
+                    <div style="display:flex;gap:8px;align-items:center;">
                         <input id="repayAmount" type="number" min="1" step="100" placeholder="e.g. 1000"
                                style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid rgba(123,106,147,0.35);font-size:0.85rem;">
                         <button id="repayBtn" class="btn-confirm" style="width:auto;padding:10px 16px;font-size:0.8rem;">
                             Repay
+                        </button>
+                        <button id="closeCreditBtn" class="btn-confirm" style="width:auto;padding:10px 16px;font-size:0.8rem;display:none;background:#27ae60;">
+                            Close Credit
                         </button>
                     </div>
                 </div>

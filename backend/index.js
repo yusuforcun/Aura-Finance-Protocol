@@ -30,7 +30,7 @@ const apiLimiter = rateLimit({
 app.use("/api/", apiLimiter);
 
 const PORT = process.env.PORT || 3000;
-const AURA_CONTRACT = process.env.AURA_CONTRACT_ADDRESS || "0xEb704E80B916e36f3B002c8C8885788CF1990070";
+const AURA_CONTRACT = process.env.AURA_CONTRACT_ADDRESS || "0x800D9a04687452325E10a87872a60C17f546dF02";
 const AURA_ABI = [
   "event CreditTaken(address indexed user, uint256 principal, uint256 totalDebt)",
   "event CreditRepaid(address indexed user, uint256 amount, uint256 remainingDebt)",

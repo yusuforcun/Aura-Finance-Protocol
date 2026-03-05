@@ -1,10 +1,11 @@
 import { BrowserProvider, Contract } from "ethers";
 
-const AURA_CONTRACT_ADDRESS = "0x88180c13610aC5dA91bE68150Fa5bbc2a00a1B11";
+const AURA_CONTRACT_ADDRESS = "0x800D9a04687452325E10a87872a60C17f546dF02";
 const API_BASE = (import.meta as any).env?.VITE_API_URL || "https://backend-jet-eta-55.vercel.app";
 const AURA_CONTRACT_ABI = [
   "function takeCredit(uint256 amount) external",
   "function repay(uint256 amount) external",
+  "function closeCredit() external",
   "function getPosition(address user) view returns (uint256 principal, uint256 repaid, bool active, uint256 debt)",
   "function joinBonus(address user) view returns (uint256)",
 ];
@@ -16,6 +17,7 @@ const summaryPrincipal = document.getElementById("summaryPrincipal");
 const summaryTotal = document.getElementById("summaryTotal");
 const repayAmountInput = document.getElementById("repayAmount") as HTMLInputElement | null;
 const repayBtn = document.getElementById("repayBtn") as HTMLButtonElement | null;
+const closeCreditBtn = document.getElementById("closeCreditBtn") as HTMLButtonElement | null;
 const txLinkEl = document.getElementById("txLink") as HTMLAnchorElement | null;
 const auraScoreBtn = document.getElementById("auraScoreBtn") as HTMLButtonElement | null;
 const auraScoreLoading = document.getElementById("auraScoreLoading");
@@ -65,6 +67,19 @@ async function refreshPosition() {
   summaryTotal.innerText = debtNum > 0 ? `${debtNum.toLocaleString()} AURA` : "0 AURA";
   hasActiveCredit = Boolean(active) && debtNum > 0;
 
+  // Show "Close Credit" when bonus fully covers debt (debt=0, active=true)
+  if (closeCreditBtn) {
+    if (active && debtNum === 0) {
+      closeCreditBtn.style.display = "inline-block";
+      if (repayAmountInput) repayAmountInput.style.display = "none";
+      if (repayBtn) repayBtn.style.display = "none";
+    } else {
+      closeCreditBtn.style.display = "none";
+      if (repayAmountInput) repayAmountInput.style.display = "";
+      if (repayBtn) repayBtn.style.display = "";
+    }
+  }
+
   const bonusRow = document.getElementById("summaryBonusRow");
   const bonusEl = document.getElementById("summaryBonus");
   if (bonusRow && bonusEl) {
@@ -92,8 +107,12 @@ async function takeCredit() {
   // Warn and block if user already has an active credit
   const [, , active, debt] = await contract.getPosition(userAddress);
   const currentDebt = Number(debt);
-  if (active && currentDebt > 0) {
-    alert("You already have an open credit. Please repay your current debt before taking a new one.");
+  if (active) {
+    if (currentDebt > 0) {
+      alert("You already have an open credit. Please repay your current debt before taking a new one.");
+    } else {
+      alert("Your credit is fully covered by bonus. Click 'Close Credit' to close it first.");
+    }
     return;
   }
 
@@ -157,6 +176,28 @@ async function repayCredit() {
   alert("Your repayment was written to Sepolia.");
 }
 
+async function closeCredit() {
+  if (!contract || !userAddress) {
+    alert("Please connect your wallet first.");
+    return;
+  }
+
+  try {
+    const tx = await contract.closeCredit();
+    await tx.wait();
+    if (txLinkEl) {
+      txLinkEl.href = `https://sepolia.etherscan.io/tx/${tx.hash}`;
+      txLinkEl.textContent = "View close transaction on Sepolia Etherscan";
+      txLinkEl.style.display = "inline";
+    }
+    await refreshPosition();
+    alert("Credit closed. Your remaining bonus is preserved for future use.");
+  } catch (e: any) {
+    const msg = e?.reason || e?.message || "Transaction failed";
+    alert(msg);
+  }
+}
+
 function init() {
   if (walletBtn) {
     walletBtn.addEventListener("click", () => {
@@ -172,7 +213,13 @@ function init() {
 
   if (repayBtn) {
     repayBtn.addEventListener("click", () => {
-      repayCredit().catch((e) => console.error("Geri ödeme hatası", e));
+      repayCredit().catch((e) => console.error("Repay error", e));
+    });
+  }
+
+  if (closeCreditBtn) {
+    closeCreditBtn.addEventListener("click", () => {
+      closeCredit().catch((e) => console.error("Close credit error", e));
     });
   }
 
