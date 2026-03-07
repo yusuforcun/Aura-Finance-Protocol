@@ -2,6 +2,15 @@
 
 A decentralized credit showcase for women, with communities and events.
 
+## 4-Line Problem Frame
+
+| Line | Question | Answer |
+|------|----------|--------|
+| 1. For whom? | Who is the user? | Women with limited access to traditional credit (single mothers, career changers, financially excluded) |
+| 2. What problem? | What pain do they face? | Gender bias in lending, lack of tailored products, no trusted space to discuss money openly |
+| 3. Why now? | Why is this urgent? | Financial inclusion gaps persist; Web3 enables transparent, self-custody credit without institutional gatekeepers |
+| 4. What if we don't? | What happens if unsolved? | Women remain locked out of liquidity, unable to invest in themselves, communities, or entrepreneurship |
+
 ## Structure
 
 - **frontend/** – Vite + TypeScript web app
@@ -72,6 +81,12 @@ npm run deploy:sepolia   # Deploy to Sepolia
    - Repo → **Settings** → **Secrets and variables** → **Actions** → **Variables**
    - **New repository variable:** `VITE_API_URL` = `https://your-backend.vercel.app` (Vercel deployment URL)
    - After this, each push to `main` builds the frontend with the correct API URL.
+
+## Documentation
+
+- [Decision Log](docs/DECISION_LOG.md) – Design and technical decisions
+- [Evidence Log](docs/EVIDENCE_LOG.md) – User research, data, and validation
+- [Risk Log](docs/RISK_LOG.md) – Risks and mitigations
 
 ## Live site
 
